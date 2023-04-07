@@ -15,11 +15,4 @@ class Quote extends Equatable {
   List<Object?> get props => throw UnimplementedError();
 }
 
-// {"_id":"0UycoCApLT",
-// "author":"Alan Watts",
-// "content":"Trying to define yourself is like trying to bite your own teeth.",
-// "tags":["humor"],
-// "authorSlug":"alan-watts",
-// "length":64,
-// "dateAdded":"2022-03-12",
-// "dateModified":"2022-03-12"}
+
