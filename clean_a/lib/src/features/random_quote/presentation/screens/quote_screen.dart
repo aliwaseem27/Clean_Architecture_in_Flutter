@@ -1,3 +1,4 @@
+import 'package:clean_a/src/core/utils/app_colors.dart';
 import 'package:clean_a/src/core/utils/app_strings.dart';
 import 'package:clean_a/src/core/utils/constants.dart';
 import 'package:clean_a/src/features/favorite_quote/presentation/screens/favorite_quote_screen.dart';
@@ -15,8 +16,9 @@ class QuoteScreen extends StatelessWidget {
 
     );
     return Scaffold(
-      appBar: appBar,
+      // appBar: appBar,
       body: QuotePageBody(),
+      // backgroundColor: AppColors.primary,
     );
   }
 }
