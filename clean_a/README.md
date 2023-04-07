@@ -1,6 +1,6 @@
-# clean_a
+# Quotes App
 
-A new Flutter project.
+Flutter project to practice Clean Architecture using Bloc State Managment.
 
 ## Getting Started
 
