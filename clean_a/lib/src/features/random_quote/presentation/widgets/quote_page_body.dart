@@ -1,5 +1,6 @@
 import 'package:clean_a/src/core/utils/app_colors.dart';
 import 'package:clean_a/src/core/utils/media_query_values.dart';
+import 'package:clean_a/src/features/random_quote/presentation/widgets/more_button.dart';
 import 'package:flutter/material.dart';
 
 class QuotePageBody extends StatelessWidget {
@@ -59,28 +60,7 @@ class QuotePageBody extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(
-                width: 100,
-                height: 40,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.buttonColor,
-                    elevation: 1,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(20),
-                      ),
-                    ),
-                  ),
-                  child: Text(
-                    "more",
-                    style: TextStyle(
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
-              ),
+              MoreButton(),
             ],
           ),
         ),
