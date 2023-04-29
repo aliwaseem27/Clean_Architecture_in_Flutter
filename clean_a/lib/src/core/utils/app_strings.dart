@@ -5,4 +5,6 @@ class AppStrings{
   static const String title = "Quotes";
   static const String refresh = "Refresh";
   static const String cachedRandomQuote = "CACHED_RANDOM_QUOTE";
+  static const String contentType = "Content-Type";
+  static const String applicationJson = "application/json";
 }
