@@ -11,7 +11,7 @@ class RandomQuoteInitial extends RandomQuoteState {
 
 class RandomQuoteIsLoading extends RandomQuoteState {
   @override
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [];
 }
 
 class RandomQuoteLoaded extends RandomQuoteState {

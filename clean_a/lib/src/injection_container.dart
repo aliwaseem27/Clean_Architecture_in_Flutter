@@ -28,7 +28,7 @@ Future<void> init() async {
         randomQuoteLocalDataSource: sl()),
   );
 
-  //Datasources
+  //Datasource
   sl.registerLazySingleton<RandomQuoteRemoteDataSource>(
       () => RandomQuoteRemoteDataSourceImpl(client: sl()));
 

@@ -1,10 +1,27 @@
 import 'package:clean_a/src/core/utils/app_colors.dart';
 import 'package:clean_a/src/core/utils/media_query_values.dart';
+import 'package:clean_a/src/features/random_quote/presentation/cubits/random_quote_cubit.dart';
 import 'package:clean_a/src/features/random_quote/presentation/widgets/more_button.dart';
+import 'package:clean_a/src/features/random_quote/presentation/widgets/quote_content.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class QuotePageBody extends StatelessWidget {
+class QuotePageBody extends StatefulWidget {
   const QuotePageBody({Key? key}) : super(key: key);
+
+  @override
+  State<QuotePageBody> createState() => _QuotePageBodyState();
+}
+
+class _QuotePageBodyState extends State<QuotePageBody> {
+
+  _getRandomQuote() =>BlocProvider.of<RandomQuoteCubit>(context).getRandomQuote();
+
+  @override
+  void initState(){
+    super.initState();
+    _getRandomQuote();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,40 +45,25 @@ class QuotePageBody extends StatelessWidget {
               ),
             ],
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+          child: BlocBuilder<RandomQuoteCubit, RandomQuoteState>(
+            builder: (context, state){
+              if (state is RandomQuoteIsLoading){
+                return Center(child: Text("Loading ... "),);
+              } else if (state is RandomQuoteError) {
+                return Center(child: Text("Error !!! "),);
+              } else if (state is RandomQuoteLoaded) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      "“" +
-                          "Respect yourself enough to walk away from anything that no longer serves you, grows you, or makes you happy." +
-                          "”",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: AppColors.mainText,
-                        fontSize: 22,
-                        fontWeight: FontWeight.w800,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Text(
-                      "Robert Tew",
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: AppColors.authorText,
-                      ),
-                    ),
+                    QuoteContent(quote: state.quote,),
+                    MoreButton(onPressed: _getRandomQuote,),
                   ],
-                ),
-              ),
-              MoreButton(),
-            ],
+                );
+              } else {
+                return Center(child: Text("Something went wrong !!"),);
+              }
+            },
           ),
         ),
       ),

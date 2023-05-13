@@ -5,10 +5,15 @@ import 'package:clean_a/src/features/favorite_quote/presentation/screens/favorit
 import 'package:clean_a/src/features/random_quote/presentation/widgets/quote_page_body.dart';
 import 'package:flutter/material.dart';
 
-class QuoteScreen extends StatelessWidget {
+class QuoteScreen extends StatefulWidget {
   const QuoteScreen({Key? key}) : super(key: key);
   static const String route = "/";
 
+  @override
+  State<QuoteScreen> createState() => _QuoteScreenState();
+}
+
+class _QuoteScreenState extends State<QuoteScreen> {
   @override
   Widget build(BuildContext context) {
     final appBar = AppBar(
