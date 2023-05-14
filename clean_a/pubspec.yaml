@@ -30,6 +30,7 @@ dependencies:
   http: ^0.13.5
   flutter_bloc: ^8.1.2
   get_it: ^7.6.0
+  dio: ^5.1.2
 
 dev_dependencies:
   flutter_test:
