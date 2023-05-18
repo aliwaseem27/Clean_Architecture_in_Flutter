@@ -1,3 +1,5 @@
+import 'package:clean_a/src/core/api/api_consumer.dart';
+import 'package:clean_a/src/core/api/dio_consumer.dart';
 import 'package:clean_a/src/core/network/network_info.dart';
 import 'package:clean_a/src/features/random_quote/data/datasources/random_quote_local_data_source.dart';
 import 'package:clean_a/src/features/random_quote/data/datasources/random_quote_remote_data_source.dart';
@@ -16,7 +18,7 @@ import 'core/api/app_interceptors.dart';
 final sl = GetIt.instance;
 
 Future<void> init() async {
-  // Features
+  //! Features
   // Blocs
   sl.registerFactory(() => RandomQuoteCubit(getRandomQuoteUseCase: sl()));
 
@@ -33,13 +35,14 @@ Future<void> init() async {
 
   //Datasource
   sl.registerLazySingleton<RandomQuoteRemoteDataSource>(
-      () => RandomQuoteRemoteDataSourceImpl(client: sl()));
+      () => RandomQuoteRemoteDataSourceImpl(apiConsumer: sl()));
 
   sl.registerLazySingleton<RandomQuoteLocalDataSource>(
       () => RandomQuoteLocalDataSourceImpl(sharedPreferences: sl()));
 
   //! Core
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(connectionChecker: sl()));
+  sl.registerLazySingleton<ApiConsumer>(() => DioConsumer(client: sl()));
 
   //! External
   final sharedPreferences = await SharedPreferences.getInstance();
@@ -53,6 +56,7 @@ Future<void> init() async {
     responseBody: true,
     error: true,
   ));
-  sl.registerLazySingleton(() => http.Client());
+  // sl.registerLazySingleton(() => http.Client());
+  sl.registerLazySingleton(() => Dio());
   sl.registerLazySingleton(() => InternetConnectionChecker());
 }
