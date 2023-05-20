@@ -32,6 +32,9 @@ dependencies:
   get_it: ^7.6.0
   dio: ^5.1.2
   flutter_native_splash: ^2.2.19
+  flutter_localizations:
+    sdk: flutter
+  intl: any
 
 dev_dependencies:
   flutter_test:
