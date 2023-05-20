@@ -50,7 +50,12 @@ class _QuotePageBodyState extends State<QuotePageBody> {
               if (state is RandomQuoteIsLoading){
                 return Center(child: Text("Loading ... "),);
               } else if (state is RandomQuoteError) {
-                return Center(child: Text("Error !!! "),);
+                return Center(child: Column(
+                  children: [
+                    Text("Error !!! "),
+                    MoreButton(onPressed: _getRandomQuote,),
+                  ],
+                ),);
               } else if (state is RandomQuoteLoaded) {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -61,7 +66,12 @@ class _QuotePageBodyState extends State<QuotePageBody> {
                   ],
                 );
               } else {
-                return Center(child: Text("Something went wrong !!"),);
+                return Center(child: Column(
+                  children: [
+                    Text("Something went wrong !!"),
+                    MoreButton(onPressed: _getRandomQuote,),
+                  ],
+                ),);
               }
             },
           ),

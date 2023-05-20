@@ -13,9 +13,7 @@ class QuoteContent extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            "“" +
-                quote.content +
-                "”",
+            "“${quote.content}”",
             textAlign: TextAlign.center,
             style: TextStyle(
               color: AppColors.mainText,
