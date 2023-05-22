@@ -6,7 +6,6 @@ import 'package:clean_a/src/features/random_quote/domain/entities/quote.dart';
 import 'package:clean_a/src/features/random_quote/domain/usecases/get_random_quote.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 
 part 'random_quote_state.dart';
 
